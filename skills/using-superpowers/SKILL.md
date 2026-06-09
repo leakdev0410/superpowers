@@ -45,6 +45,47 @@ Skills use Claude Code tool names. Non-CC platforms: see `references/copilot-too
 
 **Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.
 
+## New Session Initialization
+
+**MANDATORY:** On the very first interaction of a new conversation or when the plugin is first loaded, your first response MUST include a welcoming message that lists all available skills. For each skill, present it in this format to make it easy for the user to call:
+
+*   **[Short English Name] / [Short Vietnamese Name]** (`skill-slug`): Brief description.
+
+Use the exact short names defined in the "Skill Aliases Registry" below. This ensures the user is immediately aware of the capabilities at their disposal and can easily request them by their short, memorable names.
+
+## Skill Aliases Registry
+
+Always use these standardized short names when referencing skills to the user:
+
+| Skill Slug | Short English | Short Vietnamese |
+|---|---|---|
+| `brainstorming` | Brainstorm | Lên Ý Tưởng |
+| `dispatching-parallel-agents` | Parallel Agents | Chia Đặc Vụ |
+| `dynamic-skill-synthesis` | Dynamic Skill | Kỹ Năng Tạm |
+| `executing-plans` | Execute Plan | Chạy Kế Hoạch |
+| `finishing-a-development-branch` | Finish Branch | Chốt Nhánh |
+| `hyper-fragmented-reasoning` | Hyper-Reasoning | Phân Rã |
+| `receiving-code-review` | Receive Review | Nhận Review |
+| `requesting-code-review` | Request Review | Xin Review |
+| `subagent-driven-development` | Subagents | Đội Đặc Vụ |
+| `systematic-debugging` | Debug | Bắt Lỗi |
+| `test-driven-development` | TDD | Viết Test |
+| `using-git-worktrees` | Worktrees | Tạo Môi Trường |
+| `using-superpowers` | Core | Lõi |
+| `verification-before-completion` | Verify | Kiểm Chứng |
+| `writing-plans` | Write Plan | Viết Kế Hoạch |
+| `writing-skills` | Write Skill | Viết Kỹ Năng |
+
+## Skill Announcement Requirement
+
+**MANDATORY:** Every time you invoke or synthesize a skill, you MUST start your response to the user with the following exact format so they know what you are doing:
+
+`🛠️ **[Skill: <skill-name>]** - <brief purpose of using the skill>`
+
+For example:
+`🛠️ **[Skill: using-superpowers]** - Checking for relevant skills for your task.`
+`🛠️ **[Skill: writing-plans]** - Creating an implementation plan.`
+
 ```dot
 digraph skill_flow {
     "User message received" [shape=doublecircle];
@@ -58,7 +99,7 @@ digraph skill_flow {
     "Might any skill apply?" [shape=diamond];
     "Synthesize Ephemeral Skill" [shape=box];
     "Invoke Skill tool" [shape=box];
-    "Announce: 'Using [skill] to [purpose]'" [shape=box];
+    "Announce: '🛠️ **[Skill: name]** - purpose'" [shape=box];
     "Has checklist?" [shape=diamond];
     "Create TodoWrite todo per item" [shape=box];
     "Follow skill exactly" [shape=box];
@@ -78,9 +119,9 @@ digraph skill_flow {
 
     "Might any skill apply?" -> "Invoke Skill tool" [label="yes, even 1%"];
     "Might any skill apply?" -> "Synthesize Ephemeral Skill" [label="no skill exists"];
-    "Synthesize Ephemeral Skill" -> "Announce: 'Using [skill] to [purpose]'";
-    "Invoke Skill tool" -> "Announce: 'Using [skill] to [purpose]'";
-    "Announce: 'Using [skill] to [purpose]'" -> "Has checklist?";
+    "Synthesize Ephemeral Skill" -> "Announce: '🛠️ **[Skill: name]** - purpose'";
+    "Invoke Skill tool" -> "Announce: '🛠️ **[Skill: name]** - purpose'";
+    "Announce: '🛠️ **[Skill: name]** - purpose'" -> "Has checklist?";
     "Has checklist?" -> "Create TodoWrite todo per item" [label="yes"];
     "Has checklist?" -> "Follow skill exactly" [label="no"];
     "Create TodoWrite todo per item" -> "Follow skill exactly";

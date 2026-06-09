@@ -11,7 +11,7 @@ Guide completion of development work by presenting clear options and handling ch
 
 **Core principle:** Verify tests → Detect environment → Present options → Execute choice → Clean up.
 
-**Announce at start:** "I'm using the finishing-a-development-branch skill to complete this work."
+**Announce at start:** "🛠️ **[Skill: finishing-a-development-branch]** - Completing this work."
 
 ## The Process
 

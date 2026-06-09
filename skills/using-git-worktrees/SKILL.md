@@ -11,7 +11,7 @@ Ensure work happens in an isolated workspace. Prefer your platform's native work
 
 **Core principle:** Detect existing isolation first. Then use native tools. Then fall back to git. Never fight the harness.
 
-**Announce at start:** "I'm using the using-git-worktrees skill to set up an isolated workspace."
+**Announce at start:** "🛠️ **[Skill: using-git-worktrees]** - Setting up an isolated workspace."
 
 ## Step 0: Detect Existing Isolation
 
