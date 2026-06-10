@@ -65,6 +65,7 @@ Always use these standardized short names when referencing skills to the user:
 | `executing-plans` | Execute Plan | Chạy Kế Hoạch |
 | `finishing-a-development-branch` | Finish Branch | Chốt Nhánh |
 | `hyper-fragmented-reasoning` | Hyper-Reasoning | Phân Rã |
+| `hyperfragment-orchestrator` | Orchestrator | Tổng Chỉ Huy |
 | `receiving-code-review` | Receive Review | Nhận Review |
 | `requesting-code-review` | Request Review | Xin Review |
 | `subagent-driven-development` | Subagents | Đội Đặc Vụ |
