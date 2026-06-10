@@ -1,2 +1,1 @@
-@./skills/using-superpowers/SKILL.md
-@./skills/using-superpowers/references/agy-tools.md
+@./skills/hyperfragment-orchestrator/SKILL.md
